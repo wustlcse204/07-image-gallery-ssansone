@@ -1,1 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Image Gallery</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+    <link href="style.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a2b163d0a1.js" crossorigin="anonymous"></script>    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+<div id="page-container">
+    <div id="image-container">
+        <div class="row">
+            <div class="column">
+                <img src="arch.jpg" style="width:100%" alt="STL Arch">
+            </div>
+        
+            <div class="column">
+                <img src="downtown.jpeg" style="width:100%" alt="STL Downtown">
+            </div>
+    
+    
+            <div class="column">
+                <img src="blues.jpeg" style="width:100%" alt="STL Enterprise Center">
+            </div> 
+     
+            <div class="column">
+                <img src="stadium.jpeg" style="width:100%" alt="STL Cardinal Stadium">
+            </div>
+    
+    
+            <div class="column">
+                <img src="ted.jpg" style="width:100%" alt="STL Ted Drewes">
+            </div>
+    
+            <div class="column">
+                <img src="union.jpg" style="width:100%" alt="STL Union Station">
+            </div>
+    
+            <div class="column">
+                <img src="gardens.jpg" style="width:100%" alt="STL Botanical Gardens">
+            </div>
+    
+            <div class="column">
+                <img src="planetarium.jpeg" style="width:100%" alt="STL Planetarium">
+            </div>
+    
+            <div class="column">
+                <img src="science.jpg" style="width:100%" alt="STL Science Center">
+            </div>
+    
+            <div class="column">
+                <img src="citymuseum.jpg" style="width:100%" alt="STL City Museum">
+            </div>
+    
+            <div class="column">
+                <img src="casino.jpg" style="width:100%" alt="STL Ameristar Casino">
+            </div>
+    
+    
+            <div class="column">
+                <img src="village.jpg" style="width:100%" alt="STL Ballpark Village">
+            </div>
+    
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <a class="previous"> <i class="fas fa-arrow-left"></i></a>
+        <a class="next"> <i class="fas fa-arrow-right"></i></a> 
+        <!-- <span onclick="this.parentElement.style.display='none'" class="close">&times;</span> -->
+        <img id="largeImage" style="width:100%">
+    </div> 
+</div>
+
+    <script>
+
+//Function #1- Click on image and make bigger
+
+var images= document.getElementByTagName("img");
+for (i=0; i<images.length; i++) {
+    images[i].addEventListener("click", clickHandler);
+}
+
+function clickHandler() {
+    var largeImage=document.getElementById("largeImage");
+    img.src = largeImage.src;
+    largeImage.parentElement.style.display="block";
+}
+
+
+//Function #2-Close Large Image Button when clicking on button
+document.getElementById("closeButton").onclick=function() {
+    closeImage();
+    };
+
+function closeImage (){
+    largeImage.parentElement.style.display="none";
+}
+
+//Function #3-Click through pictures with next and previous buttons
+nextButton=document.querySelector(".nextButton");
+previousButton=document.querySelector(".previousButton");
+var imageOne=1;
+nextButton.addEventListener("click", function() {
+    largeImage.src=images[imageOne].src;
+    imageOne=imageOne +=1
+});
+
+    </script>
+
+</body>
+
+
+</html>

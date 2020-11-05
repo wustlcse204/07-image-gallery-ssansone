@@ -1,0 +1,65 @@
+
+body {
+    margin: 0;
+}
+
+.row {
+    display: flex;
+    max-width: 600px;
+}
+img {
+    margin-left: 0px;
+    height: 100px;
+    width: 100%;
+    cursor: pointer;
+
+}
+.images {
+    display: none;
+}
+
+.container {
+    position: relative;
+    height: 200px;
+    width: 200px;
+    display: none;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: white;
+}
+.column {
+    flex: 25%;
+    padding: 5px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear:both;
+}
+
+ .previous, .next {
+    position: absolute;
+    padding: 20px;
+    top: 40%;
+    width: auto;
+    margin-top: -50px;
+    color: black;
+    font-weight: bold;
+    user-select: none;
+    -webkit-user-select: none;
+} 
+
+ .next {
+    right: 0;
+}
+
+
+
+
+
+
