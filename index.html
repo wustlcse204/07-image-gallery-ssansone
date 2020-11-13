@@ -5,11 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
     <link href="style.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a2b163d0a1.js" crossorigin="anonymous"></script>    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
   <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 </head>
 
@@ -20,103 +17,143 @@
     <div id="image-container">
         <div class="row">
             <div class="column">
-                <img src="arch.jpg" style="width:100%" alt="STL Arch">
+                <!-- establishing class for when hovering on thumbnail image, it enlarges slightly -->
+                <div class="zoom">
+                <img src="arch.jpg" class="photo" style="width:100%" alt="STL Arch" >
             </div>
-        
-            <div class="column">
-                <img src="downtown.jpeg" style="width:100%" alt="STL Downtown">
             </div>
-    
+            
+            <div class="column">
+                <div class="zoom">
+                <img src="downtown.jpeg" class="photo" style="width:100%" alt="STL Downtown" >
+            </div>
+        </div>
     
             <div class="column">
-                <img src="blues.jpeg" style="width:100%" alt="STL Enterprise Center">
+                <div class="zoom">
+                <img src="blues.jpeg" class="photo" style="width:100%" alt="STL Enterprise Center" >
+            </div>
             </div> 
      
             <div class="column">
-                <img src="stadium.jpeg" style="width:100%" alt="STL Cardinal Stadium">
+                <div class="zoom">
+                <img src="stadium.jpeg" class="photo" style="width:100%" alt="STL Cardinal Stadium" >
             </div>
-    
+    </div>
     
             <div class="column">
-                <img src="ted.jpg" style="width:100%" alt="STL Ted Drewes">
+                <div class="zoom">
+                <img src="ted.jpg" class="photo" style="width:100%" alt="STL Ted Drewes" >
             </div>
+    </div>
+            <div class="column">
+                <div class="zoom">
+                <img src="union.jpg" class="photo" style="width:100%" alt="STL Union Station" >
+            </div>
+        </div>
     
             <div class="column">
-                <img src="union.jpg" style="width:100%" alt="STL Union Station">
-            </div>
+                <div class="zoom">
+                <img src="gardens.jpg" class="photo" style="width:100%" alt="STL Botanical Gardens" >
+         </div>   
+        </div>
     
             <div class="column">
-                <img src="gardens.jpg" style="width:100%" alt="STL Botanical Gardens">
+                <div class="zoom">
+                <img src="planetarium.jpeg" class="photo" style="width:100%" alt="STL Planetarium" >
             </div>
+    </div>
+
+            <div class="column">
+                <div class="zoom">
+                <img src="science.jpg" class="photo" style="width:100%" alt="STL Science Center" >
+            </div>
+    </div>
+
+            <div class="column">
+                <div class="zoom">
+                <img src="citymuseum.jpg" class="photo" style="width:100%" alt="STL City Museum" >
+            </div>
+    </div>
+
+            <div class="column">
+                <div class="zoom">
+                <img src="casino.jpg" class="photo" style="width:100%" alt="STL Ameristar Casino" >
+            </div>
+    </div>
     
             <div class="column">
-                <img src="planetarium.jpeg" style="width:100%" alt="STL Planetarium">
+                <div class="zoom">
+                <img src="village.jpg" class="photo" style="width:100%" alt="STL Ballpark Village"  >
             </div>
-    
-            <div class="column">
-                <img src="science.jpg" style="width:100%" alt="STL Science Center">
-            </div>
-    
-            <div class="column">
-                <img src="citymuseum.jpg" style="width:100%" alt="STL City Museum">
-            </div>
-    
-            <div class="column">
-                <img src="casino.jpg" style="width:100%" alt="STL Ameristar Casino">
-            </div>
-    
-    
-            <div class="column">
-                <img src="village.jpg" style="width:100%" alt="STL Ballpark Village">
-            </div>
-    
+    </div>
+
         </div>
     </div>
 
-
-
     <div class="container">
-        <a class="previous"> <i class="fas fa-arrow-left"></i></a>
-        <a class="next"> <i class="fas fa-arrow-right"></i></a> 
-        <!-- <span onclick="this.parentElement.style.display='none'" class="close">&times;</span> -->
+        <!-- clicking on the "x" button makes it disappear along with large image -->
+
+        <!-- Learned about .parentelement.style here: https://www.w3schools.com/jsref/prop_node_parentelement.asp -->
+        <span onclick="this.parentElement.style.display='none'" id="closeButton" class="close"><i class="fas fa-times-circle fa-2x"></i></span>
+        
         <img id="largeImage" style="width:100%">
+        <a id="previous"> <i class="fas fa-arrow-left fa-2x"></i></a>
+        <a id="next"> <i class="fas fa-arrow-right fa-2x"></i></a> 
     </div> 
 </div>
 
     <script>
 
-//Function #1- Click on image and make bigger
+var pics=document.getElementsByClassName("photo");
+var imageOne=0;
 
-var images= document.getElementByTagName("img");
-for (i=0; i<images.length; i++) {
-    images[i].addEventListener("click", clickHandler);
+//establishing array for the slideshow images
+for (let i=0; i <pics.length; i++) {
+    pics[i].addEventListener("click", function(){clickHandler(this,i)})
 }
 
-function clickHandler() {
-    var largeImage=document.getElementById("largeImage");
-    img.src = largeImage.src;
+//Function #1- Click on image and make bigger
+
+// make current image that you are clicking on a bigger version (copying current small image and making it bigger)
+function clickHandler(image, i) {
+    imageOne=i;
+    var largeImage = document.getElementById("largeImage");
+    largeImage.src=image.src;
     largeImage.parentElement.style.display="block";
 }
 
 
-//Function #2-Close Large Image Button when clicking on button
+//Function #2-Close Large Image Button when clicking on "x" button
 document.getElementById("closeButton").onclick=function() {
     closeImage();
     };
 
+// large image isn't displayed anymore as display is set to none
 function closeImage (){
     largeImage.parentElement.style.display="none";
 }
 
 //Function #3-Click through pictures with next and previous buttons
-nextButton=document.querySelector(".nextButton");
-previousButton=document.querySelector(".previousButton");
-var imageOne=1;
+nextButton=document.querySelector("#next");
+previousButton=document.querySelector("#previous");
+
+// when you click on next button, next image in array is accessed
 nextButton.addEventListener("click", function() {
-    largeImage.src=images[imageOne].src;
-    imageOne=imageOne +=1
+    largeImage.src=pics[imageOne].src;
+    imageOne+= 1;
 });
 
+// when you click on previous button, previous image in array is accessed
+previousButton.addEventListener("click", function() {
+    largeImage.src=pics[imageOne].src;
+    imageOne-= 1;
+});
+
+
+//zIndex is changed so that the smaller thumbnails are hidden behind the larger images once larger image is shown
+document.getElementById("closeButton").style.zIndex="1";
+document.getElementById("largeImage").style.zIndex="0.5";
     </script>
 
 </body>

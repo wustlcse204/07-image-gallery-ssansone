@@ -5,12 +5,17 @@ body {
 
 .row {
     display: flex;
-    max-width: 600px;
+}
+
+#largeImage {
+    height: 500px;
+    width: 500px;
+    position: relative;
 }
 img {
-    margin-left: 0px;
-    height: 100px;
-    width: 100%;
+    float: left;
+    height: 50px;
+    width: 50px;
     cursor: pointer;
 
 }
@@ -18,11 +23,15 @@ img {
     display: none;
 }
 
+.zoom:hover {
+transform: scale(1.5);
+}
+
 .container {
     position: relative;
-    height: 200px;
-    width: 200px;
     display: none;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .close {
@@ -32,31 +41,27 @@ img {
     color: white;
 }
 .column {
-    flex: 25%;
-    padding: 5px;
+    float: left;
+    width: 8%;
+    padding: 10px;
+    
 }
 
-.row:after {
-    content: "";
-    display: table;
-    clear:both;
-}
-
- .previous, .next {
+ #previous {
     position: absolute;
-    padding: 20px;
-    top: 40%;
-    width: auto;
-    margin-top: -50px;
-    color: black;
-    font-weight: bold;
-    user-select: none;
-    -webkit-user-select: none;
+    left: 5%;
+    color: white;
+    margin-top: 250px;
 } 
 
- .next {
-    right: 0;
+#next {
+    position: absolute;
+    right: 5%;
+    color: white;
+    margin-top: 250px;
 }
+
+
 
 
 
